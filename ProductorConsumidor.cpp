@@ -203,23 +203,23 @@ int main(int argc, char **argv) {
         sem_init(&mutex,0,1);
         sem_init(&mutexPantalla,0,1);
 
-        int testArrayProductoras[numeroProductoras];
+        int idArrayProductoras[numeroProductoras];
         for(int i = 0; i < numeroProductoras; i++){
-            testArrayProductoras[i] = i;
+            idArrayProductoras[i] = i;
         }
 
-        int testArrayConsumidoras[numeroConsumidoras];
+        int idArrayConsumidoras[numeroConsumidoras];
         for(int i = 0; i < numeroConsumidoras; i++){
-            testArrayConsumidoras[i] = i;
+            idArrayConsumidoras[i] = i;
         }
         
         //Creamos todas las hebras que nos han introducido por pantalla
         for(unsigned i = 0; i <= numeroProductoras ; i++) {
-            pthread_create( &(idHebraProductora[i]),NULL,productor, (void *)&testArrayProductoras[i]); 
+            pthread_create( &(idHebraProductora[i]),NULL,productor, (void *)&idArrayProductoras[i]); 
         }
 
         for(unsigned i=0; i <= numeroConsumidoras; i++) {
-            pthread_create( &(idHebraConsumidora[i]),NULL,consumidor, (void *)&testArrayConsumidoras[i]); 
+            pthread_create( &(idHebraConsumidora[i]),NULL,consumidor, (void *)&idArrayConsumidoras[i]); 
         }
 
 
